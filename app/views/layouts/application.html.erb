@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Affollato</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header class="header">
+  <div class="header_bar">
+    <% if user_signed_in? %>
+      <div class="user_nav">
+        <!-- <ul class="user_info">
+          <li>マイページ</li>
+          <li>投稿する</li>
+          <li>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          </li>
+        </ul> -->
+        <%= link_to 'ホーム', '/' %>
+        <%= link_to 'マイページ', "/users/#{current_user.id}" %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        <!-- <%= link_to '投稿', new_user_session_path %> -->
+      </div>
+    <% else %>
+      <div class="user_nav">
+        <%= link_to '新規登録', new_user_registration_path %>
+        <%= link_to 'ログイン', new_user_session_path %>
+      </div>
+    <% end %>
+  </div>
+</header>
+
+<%= yield %>
+
+</body>
+</html>

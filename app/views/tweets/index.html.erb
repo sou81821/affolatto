@@ -15,9 +15,33 @@
 
 <script type="text/javascript">
     handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.buildMap(
+      {
+        provider: {
+          zoom: 17,
+          center: new google.maps.LatLng(34.6945, 135.195)
+        },
+        internal: {id: 'map'}
+      },
+      function(){
+        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        // handler.fitMapToBounds();
+      }
+    );
+
+    // クリックした地点の座標にマーカーを設置
+    handler.getMap().addListener('click', function(event){
+      markers = handler.addMarkers([
+        {
+          "lat": event.latLng.lat(),
+          "lng": event.latLng.lng(),
+          <% infowindow = render "tweet", locals: { tweet: @tweet } %>
+          "infowindow": <%=raw infowindow.to_json %>
+          // "infowindow": "hello"
+        }
+      ]);
       handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
+      //handler.fitMapToBounds();
     });
 </script>

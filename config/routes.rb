@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'maps#index'
-  resources :maps, only: [:index, :new]
+  root 'tweets#index'
+  resources :tweets, only: [:index, :new, :create]
   get 'users/:id' => 'users#show'
 end

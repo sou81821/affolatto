@@ -14,13 +14,19 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(create_params)
+    Tweet.create(is_crowd: create_params[:is_crowd], latitude: create_params[:latitude], longitude: create_params[:longitude], user_id: current_user.id)
     redirect_to action: :index
+  end
+
+  def get_position
+    position = qiita_markdown(params[:text])
+    pp position
+    render text: position
   end
 
   private
   def create_params
-    params.require(:tweet).permit(:is_crowd)
+    params.require(:tweet).permit(:is_crowd, :latitude, :longitude)
   end
 
 end

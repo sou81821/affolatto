@@ -1,13 +1,20 @@
 class UsersController < ApplicationController
 
   def show
-    @email = current_user.email
     @tweets = Tweet.where(user_id: current_user.id)
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude
       marker.lng tweet.longitude
-      marker.infowindow render_to_string(:partial => "tweet", :locals => {:tweet => tweet} )
+      marker.infowindow render_to_string(:partial => "tweet", :locals => {:@tweet => tweet} )
       marker.json({ title: tweet.id })
+      if tweet.is_crowd == 1
+        marker.picture({
+          # "picture" => path_to_image('/images/logo_avatar.png'),
+          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|FF0000|000000",
+          "width": 30,
+          "height": 30
+        })
+      end
     end
   end
 

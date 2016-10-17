@@ -64,6 +64,12 @@
       );
     });
 
+    var setLatLng = function(event){
+      $('#submit').attr('value', 3);
+      $('#js_latitude').attr('value', event.latLng.lat());
+      $('#js_longitude').attr('value', event.latLng.lng());
+    }
+
     <% if user_signed_in? %>
       // クリックした地点の座標にマーカーを設置
       // google.maps.event.addListener(handler.getMap(), 'click', function(event){

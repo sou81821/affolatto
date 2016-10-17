@@ -1,3 +1,19 @@
 <h4>Crowd Tweet</h4>
-<%= tweet.id %>
-<%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %>
+<%= @tweet.id %>
+
+<%= form_for @tweet, :url => {:controller => :tweets, :action => :update}  do |f| %>
+  <%= f.hidden_field :id, :value => @tweet.id %>
+  <%= f.label "混雑状況" %><br>
+  <%= f.radio_button :is_crowd, 1 %><%= f.label :crowd_1, "混んでる" %>
+  <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
+  <%= f.submit "変更内容を保存", class: "btn btn-primary withripple", :id => "submit" %>
+<% end %>
+
+<ul class="change_list">
+  <li>
+    <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
+  </li>
+  <li>
+    <%= link_to '編集', "/tweets/#{@tweet.id}", method: :patch %>
+  </li>
+</ul>

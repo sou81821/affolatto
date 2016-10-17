@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :tweets, only: [:index, :new, :create]
   get 'users/:id' => 'users#show'
   delete 'tweets/:id' => 'tweets#destroy'
+  patch 'tweets/:id' => 'tweets#update'
 end

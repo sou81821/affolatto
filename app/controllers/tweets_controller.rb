@@ -6,8 +6,6 @@ class TweetsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude
       marker.lng tweet.longitude
-      marker.infowindow "here"
-      #marker.infowindow "<%= form_for @tweet do |f| %><%= f.text_area :introduction %><% end %>"
       marker.infowindow render_to_string(:partial => "tweet")
       marker.json({ title: tweet.id })
     end
@@ -18,10 +16,10 @@ class TweetsController < ApplicationController
     redirect_to action: :index
   end
 
-  def get_position
-    position = qiita_markdown(params[:text])
-    pp position
-    render text: position
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    redirect_to controller: 'users', action: 'show', id: current_user.id
   end
 
   private

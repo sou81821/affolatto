@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007085833) do
+ActiveRecord::Schema.define(version: 20161018083717) do
 
   create_table "tweets", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20161007085833) do
     t.datetime "updated_at"
     t.float    "latitude",         limit: 24
     t.float    "longitude",        limit: 24
+    t.text     "genre",            limit: 65535
   end
 
   create_table "users", force: :cascade do |t|

@@ -88,9 +88,7 @@
         console.log(click_marker);
         google.maps.event.trigger(click_marker[0].getServiceObject(), 'click');
         console.log($('#submit'));
-        $('#submit').attr('value', 3);
-        $('#js_latitude').attr('value', event.latLng.lat());
-        $('#js_longitude').attr('value', event.latLng.lng());
+        setTimeout(setLatLng, 1000, event);
       });
 
       // infowindowが表示された時に発生するイベント
@@ -99,21 +97,6 @@
       //   console.log("marker click");
       // });
 
-      // markerがクリックされたときにそのマーカーの座標を出力
-      // google.maps.event.addListener(infowindow, 'domready', function(){
-      // handler.getMap().infowindow.addListener('click', function(){
-      //   console.log("marker click");
-      // });s
-
-      //(1)マーカーをjQueryで取得して，triggerでclickする
-      //(2)マーカーにaddListenerでclickされた場合のイベントを追加
-      // marker.addListener('click', function(){
-      // google.maps.event.addListener(click_marker[0].google_object, 'click', function(){
-      //   console.log($('#submit'));
-      //   console.log($('#js_latitude'));
-      //   $('#js_latitude').attr('value', event.latLng.lat());
-      //   $('#js_longitude').attr('value', event.latLng.lng());
-      // });
     <% end %>
 
 </script>

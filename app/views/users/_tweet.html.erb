@@ -1,4 +1,4 @@
-<h4>Crowd Tweet</h4>
+<!-- <h4>Crowd Tweet</h4> -->
 <%= @tweet.id %>
 
 <%= form_for @tweet, :url => {:controller => :tweets, :action => :update}  do |f| %>
@@ -9,11 +9,4 @@
   <%= f.submit "変更内容を保存", class: "btn btn-primary withripple", :id => "submit" %>
 <% end %>
 
-<ul class="change_list">
-  <li>
-    <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
-  </li>
-  <li>
-    <%= link_to '編集', "/tweets/#{@tweet.id}", method: :patch %>
-  </li>
-</ul>
+<%= button_to '削除', "/tweets/#{@tweet.id}", method: :delete %>

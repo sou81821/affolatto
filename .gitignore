@@ -1,5 +1,5 @@
 # Ignore all tempfiles.
-/tmp
+tmp/*
 
 # Ignore other unneeded files.
 *.swp

@@ -72,7 +72,7 @@
       // クリックした地点の座標にマーカーを設置
       // google.maps.event.addListener(handler.getMap(), 'click', function(event){
       handler.getMap().addListener('click', function(event){
-        <% infowindow = render "tweet", locals: { tweet: @tweet, is_top: true } %>
+        <% infowindow = render partial: "tweet", locals: { tweet: @tweet, is_top: true } %>
         var click_marker = handler.addMarkers([
           {
             "lat": event.latLng.lat(),

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'tweets#index'
-  resources :tweets, only: [:index, :new, :create]
-  get 'users/:id' => 'users#show'
-  delete 'tweets/:id' => 'tweets#destroy'
-  patch 'tweets/:id' => 'tweets#update'
+  resources :tweets, except: [:show, :edit]
+  resources :users, only: [:show]
 end

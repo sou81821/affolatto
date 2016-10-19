@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
+
+    if current_user.id != params[:id].to_i
+      redirect_to action: 'show', id: current_user.id
+    end
+
     @tweets = Tweet.where(user_id: current_user.id)
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude
       marker.lng tweet.longitude
-      marker.infowindow render_to_string(:partial => "tweet", :locals => {:@tweet => tweet} )
+      marker.infowindow render_to_string(:partial => "tweets/tweet", :locals => { :@tweet => tweet, :is_top => false } )
       marker.json({ title: tweet.id })
       if tweet.is_crowd == 1
         marker.picture({

@@ -1,3 +1,13 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  .no_tweets {
+    display: none;
+  }
+  .gmap_outside {
+    width: 800px;
+    margin: 0 auto;
+  }
+  .gmap_inside {
+    width: 800px;
+    height: 400px;
+  }
+}

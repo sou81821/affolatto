@@ -1,10 +1,18 @@
-<!-- <h4>Crowd Tweet</h4> -->
-<p>住所：</p>
 <%= form_for @tweet do |f| %>
-  <%= f.hidden_field :latitude, :id => "js_latitude", :value => 0 %>
-  <%= f.hidden_field :longitude, :id => "js_longitude", :value => 0 %>
   <%= f.label "混雑状況" %><br>
   <%= f.radio_button :is_crowd, 1 %><%= f.label :crowd_1, "混んでる" %>
   <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
-  <%= f.submit "投稿する", class: "btn btn-primary withripple", :id => "submit" %>
+
+  <% if is_top == true %>
+    <%= f.hidden_field :latitude, :id => "js_latitude", :value => 0 %>
+    <%= f.hidden_field :longitude, :id => "js_longitude", :value => 0 %>
+    <%= f.submit "投稿する", class: "btn btn-primary withripple", :id => "submit" %>
+  <% else %>
+    <%= f.hidden_field :id, :value => @tweet.id %>
+    <%= f.submit "変更内容を保存", class: "btn btn-primary withripple", :id => "submit" %>
+  <% end %>
+<% end %>
+
+<% if is_top != true %>
+  <%= button_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
 <% end %>

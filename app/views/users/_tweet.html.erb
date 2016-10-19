@@ -1,7 +1,4 @@
-<!-- <h4>Crowd Tweet</h4> -->
-<%= @tweet.id %>
-
-<%= form_for @tweet, :url => {:controller => :tweets, :action => :update}  do |f| %>
+<%= form_for @tweet, :url => {:controller => :tweets, :action => :update} do |f| %>
   <%= f.hidden_field :id, :value => @tweet.id %>
   <%= f.label "混雑状況" %><br>
   <%= f.radio_button :is_crowd, 1 %><%= f.label :crowd_1, "混んでる" %>

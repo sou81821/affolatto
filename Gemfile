@@ -65,3 +65,7 @@ gem 'factory_girl_rails', '~> 4.4.1'
 # google maps
 gem 'gmaps4rails'
 gem 'geocoder'
+
+# facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'

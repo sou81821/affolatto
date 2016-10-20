@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
+  layout 'mypage'
   before_action :authenticate_user!
 
   def show
-
     if current_user.id != params[:id].to_i
       redirect_to action: 'show', id: current_user.id
     end

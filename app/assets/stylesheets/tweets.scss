@@ -2,6 +2,20 @@ body {
   .area_search {
     width: 200px;
     margin: 20px auto;
+
+    #search_address {
+      width: 200px;
+    }
+
+    #search_button {
+      width: 50px;
+    }
+
+    .clearfix:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
   }
   .gmap_outside {
     width: 800px;

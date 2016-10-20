@@ -12,8 +12,9 @@ class User < ActiveRecord::Base
       user = User.create(
         uid:      auth.uid,
         provider: auth.provider,
-        email:    User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
+        email:    User.get_email(auth),
+        password: Devise.friendly_token[0, 20],
+        name:     auth.info.name
       )
     end
 
@@ -21,7 +22,9 @@ class User < ActiveRecord::Base
   end
 
   private
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
+  def self.get_email(auth)
+    email = auth.info.email
+    email = "#{auth.provider}-#{auth.uid}@example.com" if email.blank?
+    return email
   end
 end

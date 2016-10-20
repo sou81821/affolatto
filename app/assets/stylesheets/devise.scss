@@ -1,0 +1,51 @@
+@mixin boxBase($margin: 30px auto, $padding: 10px) {
+  margin: $margin;
+  padding: $padding;
+}
+@mixin basePadding($padding: 10px) {
+  padding: $padding;
+}
+@mixin baseMargin($margin: 10px auto) {
+  margin: $margin;
+}
+
+div.contents.row {
+  h2 {
+    @include boxBase(20px 0, 0);
+    font-weight: normal;
+    strong {
+      font-weight: bold;
+      padding-right: 5px;
+      font-size: 1.2em;
+    }
+  }
+}
+
+form {
+  h3 {
+    @include baseMargin(0 0 20px);
+    text-align: center;
+    font-weight: normal;
+    font-size: 20px;
+    color: #666;
+  }
+  input,textarea {
+    width: 100%;
+    @include boxBase(5px 0 15px,10px);
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+    font-family: "游ゴシック", "YuGothic";
+  }
+  input[type="submit"] {
+    background-color: #57C3E9;
+    border-radius: 20px;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    &:hover {
+      background-color: lighten(#57C3E9, 10%);
+    }
+  }
+}
+
+// input label form

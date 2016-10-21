@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude
       marker.lng tweet.longitude
-      # marker.infowindow render_to_string(:partial => "tweet", :locals => { :@is_top => true })
+      marker.infowindow render_to_string(:partial => "tweet", :locals => { :@tweet => tweet, :is_top => true, :top_tweeted => true })
       marker.json({ title: tweet.id })
       if tweet.is_crowd == 1
         marker.picture({

@@ -1,15 +1,29 @@
 <%= form_for @tweet do |f| %>
-  <%= f.label "混雑状況" %><br>
-  <%= f.radio_button :is_crowd, 1 %><%= f.label :crowd_1, "混んでる" %>
-  <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
+  <% if top_tweeted == true %>
 
-  <% if is_top == true %>
-    <%= f.hidden_field :latitude, :id => "js_latitude", :value => 0 %>
-    <%= f.hidden_field :longitude, :id => "js_longitude", :value => 0 %>
-    <%= f.submit "投稿する", class: "btn btn-primary withripple", :id => "submit" %>
+    <% if @tweet.user.provider == "facebook" %>
+      <%= image_tag  @tweet.user.fb_avatar, :size => '50x50' %>
+    <% else %>
+      <%= image_tag  @tweet.user.avatar, :size => '50x50' %>
+    <% end %>
+    <%= @tweet.user.name %>
+    <%= @tweet.updated_at %>
+
   <% else %>
-    <%= f.hidden_field :id, :value => @tweet.id %>
-    <%= f.submit "変更内容を保存", class: "btn btn-primary withripple", :id => "submit" %>
+
+    <%= f.label "混雑状況" %><br>
+    <%= f.radio_button :is_crowd, 1 %><%= f.label :crowd_1, "混んでる" %>
+    <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
+
+    <% if is_top == true %>
+      <%= f.hidden_field :latitude, :id => "js_latitude", :value => 0 %>
+      <%= f.hidden_field :longitude, :id => "js_longitude", :value => 0 %>
+      <%= f.submit "投稿する", class: "btn btn-primary withripple", :id => "submit" %>
+    <% else %>
+      <%= f.hidden_field :id, :value => @tweet.id %>
+      <%= f.submit "変更内容を保存", class: "btn btn-primary withripple", :id => "submit" %>
+    <% end %>
+
   <% end %>
 <% end %>
 

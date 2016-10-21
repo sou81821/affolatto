@@ -49,6 +49,10 @@ group :test do
   gem 'faker'
 end
 
+# test
+gem 'rspec-rails', '~> 3.1.0'
+gem 'factory_girl_rails', '~> 4.4.1'
+
 gem 'paperclip'
 gem 'pry'
 gem 'devise'
@@ -58,10 +62,6 @@ gem 'mechanize'
 gem 'capybara'
 gem 'poltergeist'
 
-# test
-gem 'rspec-rails', '~> 3.1.0'
-gem 'factory_girl_rails', '~> 4.4.1'
-
 # google maps
 gem 'gmaps4rails'
 gem 'geocoder'
@@ -69,3 +69,4 @@ gem 'geocoder'
 # facebook login
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'open_uri_redirections'

@@ -70,3 +70,6 @@ gem 'geocoder'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'open_uri_redirections'
+
+# cron
+gem 'whenever', :require => false

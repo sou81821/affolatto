@@ -1,5 +1,6 @@
-# Ignore all tempfiles.
-tmp/*
+# Ignore all logfiles and tempfiles.
+tmp
+log/*.log
 
 # Ignore other unneeded files.
 *.swp

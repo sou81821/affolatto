@@ -1,8 +1,9 @@
-body {
-  background-color: #ffffff;
-  font-size: 20px;
-  margin: 0 auto;
-}
+// body {
+//   background-color: #ffffff;
+//   font-size: 20px;
+//   font-family: sans-serif;
+//   margin: 0 auto;
+// }
 
 h1,h2,h3,h4,h5,h6,p {
   padding: 10px 0;
@@ -10,6 +11,7 @@ h1,h2,h3,h4,h5,h6,p {
 }
 
 header {
+  width: 100%;
   font-size: 18px;
 
   .header_bar {
@@ -33,6 +35,52 @@ header {
         // transition: .3s;
         color: gray;
       }
+    }
+  }
+}
+
+body {
+  .area_search {
+    height: 50px;
+    width: 275px;
+    margin: auto;
+
+    #search_address {
+      width: 200px;
+    }
+
+    #search_button {
+      width: 50px;
+    }
+
+    .searchaddress {
+      float: left;
+      margin: auto;
+    }
+
+    .searchbutton {
+      float: left;
+      margin: 0 auto;
+    }
+
+    .clearfix:after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+  }
+
+  .gmap_outside {
+    // width: 800px;
+    // margin: 0 auto;
+  }
+
+  .gmap_inside {
+    width: 1200px;
+    height: 400px;
+    margin:0 auto;
+    @media screen and (max-width: 767px) {
+      width: 700px;
     }
   }
 }

@@ -10,6 +10,16 @@
 }
 
 div.contents.row {
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .title {
+    width: 500px;
+    margin: 0 auto;
+  }
+
   h2 {
     @include boxBase(20px 0, 0);
     font-weight: normal;
@@ -46,6 +56,50 @@ form {
       background-color: lighten(#57C3E9, 10%);
     }
   }
+  #login_remember {
+    display: inline-flex;
+    float: left;
+    input {
+      width: 25px;
+    }
+    label {
+      font-size: 15px;
+    }
+  }
+  #forget_password {
+    float: right;
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
-// input label form
+.FbBtn {
+  background-color: #3b5998;
+  height: 45px;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 20px auto;
+}
+
+.FbBtn:after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    background-image: image-url("FB-fLogo.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.FbBtnLabel {
+    color: #ffffff;
+    position: relative;
+    top: 13px;
+    text-align: center;
+    margin: 0 20px 0 50px;
+}

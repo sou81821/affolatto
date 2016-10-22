@@ -2,9 +2,17 @@
   <% if top_tweeted == true %>
 
     <% if @tweet.user.provider == "facebook" %>
-      <%= image_tag  @tweet.user.fb_avatar, :size => '50x50' %>
+      <% if @tweet.user.avatar.blank? %>
+        <%= image_tag  @tweet.user.fb_avatar, :size => '50x50' %>
+      <% else %>
+        <%= image_tag  @tweet.user.avatar, :size => '50x50' %>
+      <% end %>
     <% else %>
-      <%= image_tag  @tweet.user.avatar, :size => '50x50' %>
+      <% if @tweet.user.avatar.blank? %>
+        <%= image_tag  "no_image.jpg", :size => '50x50' %>
+      <% else %>
+        <%= image_tag  @tweet.user.avatar, :size => '50x50' %>
+      <% end %>
     <% end %>
     <%= @tweet.user.name %>
     <%= @tweet.updated_at %>

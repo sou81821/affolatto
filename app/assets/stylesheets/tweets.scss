@@ -1,0 +1,32 @@
+.infowindow {
+  form {
+    text-align: center;
+
+    input[type="radio"] {
+      width: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #57C3E9;
+      border-radius: 10px;
+      color: #fff;
+      border: 0;
+      font-size: 12px;
+      padding: 5px;
+      margin: 0;
+      &:hover {
+        background-color: lighten(#57C3E9, 10%);
+      }
+    }
+  }
+
+  .tweet {
+    div {
+      margin: 5px;
+    }
+    .user_name p{
+      font-size: 15px;
+      
+    }
+  }
+}

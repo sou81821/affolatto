@@ -49,6 +49,10 @@ group :test do
   gem 'faker'
 end
 
+group :production, :staging do
+  gem 'rails_12factor'
+end
+
 # test
 gem 'rspec-rails', '~> 3.1.0'
 gem 'factory_girl_rails', '~> 4.4.1'

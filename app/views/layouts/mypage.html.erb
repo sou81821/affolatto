@@ -13,16 +13,23 @@
 </head>
 <body>
 <header class="header">
-  <div class="header_bar">
-    <div class="user_nav">
-      <%= link_to 'ホーム', '/' %>
-      <%= link_to 'プロフィール編集', edit_user_registration_path %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <div id="menu-box">
+    <div id="toggle">
+      <a href="#">menu</a>
     </div>
+    <ul id="menu" class="">
+      <li><%= link_to 'ホーム', '/' %></li>
+      <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    </ul>
   </div>
 </header>
 
 <%= yield %>
+
+<footer>
+  <p>Copyright Affollato 2016.</p>
+</footer>
 
 </body>
 </html>

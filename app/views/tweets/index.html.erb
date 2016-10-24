@@ -1,7 +1,7 @@
 <!-- 地図の検索フォーム -->
 <form>
   <div class="area_search clearfix">
-    <input type="text" id="search_address">
+    <input type="text" id="search_address", placeholder="検索エリア">
     <input type="button" value="検索" id="search_button">
   </div>
 </form>
@@ -60,7 +60,6 @@
 
     // infowindowにマーカーの緯度経度を埋め込む関数
     var setLatLng = function(event){
-      $('#submit').attr('value', 3);
       $('#js_latitude').attr('value', event.latLng.lat());
       $('#js_longitude').attr('value', event.latLng.lng());
     }
@@ -80,9 +79,7 @@
         handler.bounds.extendWith(click_marker);
         //handler.fitMapToBounds();
 
-        console.log(click_marker);
         google.maps.event.trigger(click_marker[0].getServiceObject(), 'click');
-        console.log($('#submit'));
         setTimeout(setLatLng, 1000, event);
       });
 

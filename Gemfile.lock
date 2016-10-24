@@ -126,7 +126,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.4.5)
+    mysql2 (0.3.18)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
     nokogiri (1.6.8.1)
@@ -279,7 +279,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mechanize
-  mysql2 (>= 0.3.13, < 0.5)
+  mysql2 (= 0.3.18)
   omniauth
   omniauth-facebook
   open_uri_redirections

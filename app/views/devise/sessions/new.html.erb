@@ -15,21 +15,25 @@
       <%= f.submit "Log in" %>
     </div>
 
-    <div class="field" id="login_remember">
-      <%= f.check_box :remember_me %>
-      <%= f.label :"ログイン状態を保存" %>
-    </div>
+    <div class="sub_button">
+      <div class="field" id="login_remember">
+        <%= f.check_box :remember_me %>
+        <%= f.label :"ログイン状態を保存" %>
+      </div>
 
-    <div id="forget_password">
-      <%= link_to "パスワードを忘れた方", new_password_path(resource_name) %><br />
+      <div id="forget_password">
+        <%= link_to "パスワードを忘れた方", new_password_path(resource_name) %><br />
+      </div>
     </div>
 
   <% end %>
 
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to(omniauth_authorize_path(resource_name, provider), class: "FbBtn" ) do %>
-      <div class="FbBtnLabel">Facebookでログイン</div>
+  <div class="sns_login">
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to(omniauth_authorize_path(resource_name, provider), class: "FbBtn" ) do %>
+        <div class="FbBtnLabel">Facebookでログイン</div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <!-- <%= render "devise/shared/links" %> -->
 </div>

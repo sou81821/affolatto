@@ -39,10 +39,12 @@
     </div>
   <% end %>
 
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to(omniauth_authorize_path(resource_name, provider), class: "FbBtn" ) do %>
-      <div class="FbBtnLabel">Facebookでログイン</div>
+  <div class="sns_login">
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to(omniauth_authorize_path(resource_name, provider), class: "FbBtn" ) do %>
+        <div class="FbBtnLabel">Facebookでログイン</div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <!-- <%= render "devise/shared/links" %> -->
 </div>

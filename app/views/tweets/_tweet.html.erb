@@ -30,7 +30,7 @@
 
       <div class="new_tweet">
         <%= f.label "混雑状況" %><br>
-        <%= f.radio_button :is_crowd, 1 %><%= f.label :crowd_1, "混んでる" %>
+        <%= f.radio_button :is_crowd, 1, {:checked => true} %><%= f.label :crowd_1, "混んでる" %>
         <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
 
         <% if is_top == true %>

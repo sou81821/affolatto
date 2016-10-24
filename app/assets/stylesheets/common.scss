@@ -13,7 +13,12 @@
 header {
   #menu-box {
     background-color: #333;
-    // height: 40px;
+    overflow: hidden;
+    // .clearfix:after {
+    //   content: "";
+    //   clear: both;
+    //   display: block;
+    // }
 
     #menu {
       width: 100%;

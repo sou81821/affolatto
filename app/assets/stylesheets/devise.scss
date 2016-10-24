@@ -42,9 +42,8 @@ form {
     font-size: 20px;
     color: #666;
   }
-  
   input,textarea {
-    width: 90%;
+    width: 100%;
     @include boxBase(5px 0 15px, 10px);
     border: 1px solid #D8D8D8;
     border-radius: 5px;

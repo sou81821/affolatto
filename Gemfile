@@ -50,8 +50,9 @@ group :test do
   gem 'faker'
 end
 
-group :production, :staging do
+group :production do
   gem 'rails_12factor'
+  gem 'pg'
 end
 
 # test

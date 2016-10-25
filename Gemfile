@@ -78,3 +78,5 @@ gem 'open_uri_redirections'
 
 # cron
 gem 'whenever', :require => false
+
+gem 'jquery-turbolinks'

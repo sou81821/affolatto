@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'mypage'
+  # layout 'mypage'
   before_action :authenticate_user!
 
   def show

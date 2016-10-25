@@ -1,4 +1,4 @@
-var responsive_menu_click = $(function(){
+$(function(){
   $("#toggle").click(function(){
     $("#menu").slideToggle();
     return false;

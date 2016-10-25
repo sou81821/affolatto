@@ -4,10 +4,12 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="field">
+      <%= f.label :"メールアドレス" %><br />
       <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %>
     </div>
 
     <div class="field">
+      <%= f.label :"パスワード" %><br />
       <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード" %>
     </div>
 
@@ -34,6 +36,10 @@
         <div class="FbBtnLabel">Facebookでログイン</div>
       <% end %>
     <% end %>
+  </div>
+
+  <div id="back">
+    <%= link_to "Back", :back %>
   </div>
   <!-- <%= render "devise/shared/links" %> -->
 </div>

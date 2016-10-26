@@ -1,7 +1,11 @@
 <div class="contents row">
-  <h2>Log in</h2>
+  <h2>ログイン</h2>
+  <% if alert %>
+    <p class="alert alert-notice"><%= alert %></p>
+  <% end %>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <!-- <%= devise_error_messages! %> -->
 
     <div class="field">
       <%= f.label :"メールアドレス" %><br />
@@ -14,7 +18,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Log in" %>
+      <%= f.submit "ログイン" %>
     </div>
 
     <!-- <div class="sub_button">
@@ -39,7 +43,7 @@
   </div>
 
   <div id="back">
-    <%= link_to "Back", :back %>
+    <%= link_to "戻る", :back %>
   </div>
   <!-- <%= render "devise/shared/links" %> -->
 </div>

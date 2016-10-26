@@ -36,6 +36,15 @@ div.contents.row {
     }
   }
 
+  .display-required {
+    padding: 0;
+    p {
+      text-align: right;
+      font-size: 12px;
+      color: orange;
+    }
+  }
+
   #back {
     float: right;
     padding-top: 10px;
@@ -151,4 +160,18 @@ form {
   top: 13px;
   text-align: center;
   margin: 0 20px 0 50px;
+}
+
+// deviseのエラーメッセージ
+#error_explanation {
+  h2 {
+    display: none;
+  }
+  ul li {
+    color: orange;
+  }
+}
+
+.alert {
+  color: orange;
 }

@@ -1,23 +1,27 @@
 <div class="contents row">
   <div class="title">
-    <h2>Sign up</h2>
+    <h2>新規登録</h2>
+  </div>
+
+  <div class="display-required">
+    <p>* は必須です</p>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="field">
-      <%= f.label :"フルネーム(必須)" %><br />
-      <%= f.text_field :name, autofocus: true, placeholder: "名前(フルネーム)" %>
+      <%= f.label :"フルネーム *" %><br />
+      <%= f.text_field :name, autofocus: true, placeholder: "フルネーム" %>
     </div>
 
     <div class="field">
-      <%= f.label :"メールアドレス(必須)" %><br />
+      <%= f.label :"メールアドレス *" %><br />
       <%= f.email_field :email, placeholder: "メールアドレス" %>
     </div>
 
     <div class="field">
-      <%= f.label :"パスワード(必須)" %>
+      <%= f.label :"パスワード(6文字以上) *" %>
       <% if @validatable %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -25,7 +29,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :"パスワード確認(必須)" %><br />
+      <%= f.label :"パスワード確認 *" %><br />
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード(確認)" %>
     </div>
 
@@ -35,7 +39,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "新規登録" %>
     </div>
   <% end %>
 
@@ -48,7 +52,7 @@
   </div>
 
   <div id="back">
-    <%= link_to "Back", :back %>
+    <%= link_to "戻る", :back %>
   </div>
   <!-- <%= render "devise/shared/links" %> -->
 </div>

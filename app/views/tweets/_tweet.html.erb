@@ -22,14 +22,16 @@
           <p><strong><%= @tweet.user.name %></strong></p>
         </div>
         <div id="updated_at">
-          <p><%= @tweet.updated_at %></p>
+          <p><%= @tweet.updated_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
         </div>
       </div>
 
     <% else %>
 
       <div class="new_tweet">
-        <%= f.label "混雑状況" %><br>
+        <div id="crowd_label">
+          <%= f.label "混雑状況" %><br>
+        </div>
         <%= f.radio_button :is_crowd, 1, {:checked => true} %><%= f.label :crowd_1, "混んでる" %>
         <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
 

@@ -8,7 +8,6 @@
 h1,h2,h3,h4,h5,h6,p,label,a {
   color: #546E7A;
   font-family: "游ゴシック", "YuGothic";
-  -webkit-appearance: none;
 }
 
 header {
@@ -29,7 +28,6 @@ header {
         padding: 0;
 
         a {
-          -webkit-appearance: none;
           display: block;
           padding: 12px 0 10px;
           background: #333;
@@ -47,10 +45,6 @@ header {
 
     #toggle {
      display: none;
-
-     a {
-       -webkit-appearance: none;
-     }
     }
 
     // タブレットサイズ
@@ -188,7 +182,6 @@ body {
 
 footer {
   p {
-    -webkit-appearance: none;
     font-size: 10px;
     color: #546E7A;
     text-align: center;

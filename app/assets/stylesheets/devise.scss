@@ -28,6 +28,7 @@ div.contents.row {
     @include boxBase(20px 0, 0);
     font-weight: normal;
     text-align: center;
+    -webkit-appearance: none;
     strong {
       font-weight: bold;
       padding-right: 5px;
@@ -72,6 +73,7 @@ form {
   }
 
   input[type="submit"] {
+    -webkit-appearance: none;
     background-color: #57C3E9;
     border-radius: 20px;
     color: #fff;
@@ -115,9 +117,15 @@ form {
   }
 }
 
+#back {
+  a {
+    -webkit-appearance: none;
+  }
+}
 
 // facebookログイン
 .sns_login {
+  -webkit-appearance: none;
   text-align: center;
 }
 

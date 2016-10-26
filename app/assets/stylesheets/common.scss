@@ -8,6 +8,7 @@
 h1,h2,h3,h4,h5,h6,p,label,a {
   color: #546E7A;
   font-family: "游ゴシック", "YuGothic";
+  -webkit-appearance: none;
 }
 
 header {
@@ -155,6 +156,7 @@ body {
 
     #search_address {
       width: 20%;
+      -webkit-appearance: none;
     }
 
     #search_button {

@@ -17,19 +17,24 @@
 <header class="header">
   <div id="menu-box">
     <div id="toggle">
-      <a href="#">menu</a>
+      <a href="#"></a>
     </div>
-    <ul id="menu" class="">
-      <% if user_signed_in? %>
-        <li><%= link_to 'ホーム', '/' %></li>
-        <li><%= link_to 'マイページ', "/users/#{current_user.id}" %></li>
-        <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to '新規登録', new_user_registration_path %></li>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
-      <% end %>
-    </ul>
+    <div id="header-left">
+      <p>affollato</p>
+    </div>
+    <div id="header-right">
+      <ul id="menu" class="">
+        <% if user_signed_in? %>
+          <li><%= link_to 'ホーム', '/' %></li>
+          <li><%= link_to 'マイページ', "/users/#{current_user.id}" %></li>
+          <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to '新規登録', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </header>
 

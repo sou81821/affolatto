@@ -12,8 +12,27 @@ h1,h2,h3,h4,h5,h6,p,label,a {
 
 header {
   #menu-box {
-    background-color: #333;
+    background-color: #222;
     overflow: hidden;
+
+    #header-left {
+      width: 20%;
+      float: left;
+
+      p {
+        color: white;
+        margin-top: 8px;
+        margin-left: 20px;
+        margin-bottom: 0;
+        font-size: 20px;
+      }
+    }
+
+    #header-right {
+      overflow: hidden;
+      float: right;
+      display: inline-block;
+    }
 
     #menu {
       width: 100%;
@@ -22,15 +41,14 @@ header {
 
       li {
         display: block;
-        float: right;
-        width: 120px;
-        margin: 0;
+        float: left;
+        margin: 0 20px;
         padding: 0;
 
         a {
           display: block;
           padding: 12px 0 10px;
-          background: #333;
+          background: #222;
           color: #fff;
           text-align: center;
           text-decoration: none;
@@ -49,28 +67,45 @@ header {
 
     // タブレットサイズ
     @media only screen and (max-width: 768px) {
-      #menu li{
-        width: 100px;
-        a {
-          font-size: 12px;
-        }
+      #menu li {
+        font-size: 15px;
+        margin: 0 10px;
       }
     }
 
     // スマホサイズ
     @media only screen and (max-width: 480px) {
+      #header-right {
+        width: 100%;
+      }
       #menu {
         display: none;
 
         li {
           width: 100%;
+          margin: 0;
+          border-bottom: 1px solid #444;
+
+          a {
+            background-color: #333;
+          }
+        }
+      }
+
+      #header-left {
+        width: 80%;
+        text-align: center;
+
+        p {
+          margin-left: 0;
         }
       }
 
       #toggle{
         display: block;
         position: relative;
-        width: 100%;
+        width: 10%;
+        float: left;
         background: #222;
 
         &:before {
@@ -86,9 +121,10 @@ header {
         }
 
         a {
+          width: 15%;
+          height: 46px;
           display: block;
           position: relative;
-          padding: 12px 0 10px;
           border-bottom: 1px solid #444;
           color: #fff;
           text-align: center;
@@ -116,23 +152,6 @@ header {
       }
     }
   }
-
-  // .user_nav {
-  //   float: right;
-  //   margin: 12px;
-  //
-  //   a {
-  //     width: 20px;
-  //     text-decoration: none;
-  //     color: white;
-  //     margin: 10px;
-  //
-  //     &:hover {
-  //       // transition: .3s;
-  //       color: gray;
-  //     }
-  //   }
-  // }
 }
 
 body {
@@ -143,7 +162,7 @@ body {
     width: 90%;
     margin: 30px auto;
     @media screen and (max-width: 400px) {
-      margin: 20px auto;
+      margin: 15px auto 10px;
     }
     text-align: center;
     overflow: hidden;

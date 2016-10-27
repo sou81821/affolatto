@@ -14,6 +14,20 @@ $(function(){
   });
 });
 
-$("#toggle").on("click", function(){
-  console.log("hoge");
-})
+
+function successFunc(position) {
+  console.log("success")
+  console.log( position.coords.latitude );
+  console.log( position.coords.longitude );
+}
+
+function errorFunc(error) {
+  console.log("failt");
+  console.log( error.code );
+}
+
+var optionObj = {
+  "enableHighAccuracy": false,
+  "timeout": 8000,
+  "maximumAge": 5000
+};

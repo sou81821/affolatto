@@ -18,25 +18,24 @@
 <script type="text/javascript">
   if(navigator.geolocation) {
     // 現在地の取得
-    console.log("ok");
     navigator.geolocation.getCurrentPosition(successFunc, errorFunc, optionObj);
   }
 
-  handler = Gmaps.build('Google');
-  handler.buildMap(
-    {
-      provider: {
-        zoom: 16,
-        center: new google.maps.LatLng(34.6945, 135.195)
-      },
-      internal: {id: 'map'}
-    },
-    function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      // handler.fitMapToBounds();
-    }
-  );
+  // handler = Gmaps.build('Google');
+  // handler.buildMap(
+  //   {
+  //     provider: {
+  //       zoom: 16,
+  //       center: new google.maps.LatLng(34.6945, 135.195)
+  //     },
+  //     internal: {id: 'map'}
+  //   },
+  //   function(){
+  //     markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  //     handler.bounds.extendWith(markers);
+  //     // handler.fitMapToBounds();
+  //   }
+  // );
 
   // 検索ボックスに入力された地域に移動
   $('#search_button').on('click', function(){

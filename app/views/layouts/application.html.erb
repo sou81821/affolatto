@@ -20,14 +20,30 @@
       <a href="#"></a>
     </div>
     <div id="header-left">
-      <p>affollato</p>
+      <a href="/">affollato</a>
     </div>
+    <% if user_signed_in? %>
+      <div id="profile-image">
+        <% if current_user.provider == "facebook" %>
+          <% if current_user.avatar.blank? %>
+            <%= link_to image_tag(current_user.fb_avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
+          <% else %>
+            <%= link_to image_tag(current_user.avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
+          <% end %>
+        <% else %>
+          <% if current_user.avatar.blank? %>
+            <%= link_to image_tag('no_image.jpg', {:alt => 'プロフィール'}), edit_user_registration_path %>
+          <% else %>
+            <%= link_to image_tag(current_user.avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
     <div id="header-right">
       <ul id="menu" class="">
         <% if user_signed_in? %>
           <li><%= link_to 'ホーム', '/' %></li>
-          <li><%= link_to 'マイページ', "/users/#{current_user.id}" %></li>
-          <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
+          <li><%= link_to '投稿履歴', "/users/#{current_user.id}" %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to '新規登録', new_user_registration_path %></li>

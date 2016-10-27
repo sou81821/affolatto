@@ -2,8 +2,14 @@
   form {
     text-align: center;
 
+    .delete-link {
+      float: right;
+    }
+
     #crowd_label {
       margin-bottom: 5px;
+      width: 80%;
+      padding-left: 15px;
     }
 
     input[type="radio"] {
@@ -28,10 +34,25 @@
 
   .tweet {
     div {
-      margin: 5px;
+      margin: 0 5px;
     }
-    .user_name p{
-      font-size: 15px;
+
+    #user-info {
+      overflow: hidden;
+
+      #user-avatar {
+        float: left;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      #user-name {
+        float: left;
+        font-size: 15px;
+      }
+
     }
   }
 }

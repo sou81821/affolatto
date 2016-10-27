@@ -6,11 +6,6 @@
       float: right;
     }
 
-    task :scraping_task => :environment do
-      Scraping.scraping_from_tabelog
-    end
-
-
     #crowd_label {
       margin-bottom: 5px;
       width: 80%;

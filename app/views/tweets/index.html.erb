@@ -16,55 +16,52 @@
 </div>
 
 <script type="text/javascript">
-  if(navigator.geolocation) {
-    // 現在地の取得
-    navigator.geolocation.getCurrentPosition(
-      function(position){
-        console.log( position.coords.latitude );
-        console.log( position.coords.longitude );
-        handler = Gmaps.build('Google');
-        handler.buildMap(
-          {
-            provider: {
-              zoom: 16,
-              center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-            },
-            internal: {id: 'map'}
-          },
-          function(){
-            markers = handler.addMarkers(<%=raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            // handler.fitMapToBounds();
-          }
-        );
-      },
-
-      function(error){
-        console.log( error.code );
-        handler = Gmaps.build('Google');
-        handler.buildMap(
-          {
-            provider: {
-              zoom: 16,
-              center: new google.maps.LatLng(34.6945, 135.195)
-            },
-            internal: {id: 'map'}
-          },
-          function(){
-            markers = handler.addMarkers(<%=raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            // handler.fitMapToBounds();
-          }
-        );
-      },
-
-      {
-        "enableHighAccuracy": false,
-        "timeout": 8000,
-        "maximumAge": 5000
-      }
-    );
-  }
+  // // 現在地の取得
+  // if(navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(
+  //     function(position){
+  //       handler = Gmaps.build('Google');
+  //       handler.buildMap(
+  //         {
+  //           provider: {
+  //             zoom: 16,
+  //             center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+  //           },
+  //           internal: {id: 'map'}
+  //         },
+  //         function(){
+  //           markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  //           handler.bounds.extendWith(markers);
+  //           // handler.fitMapToBounds();
+  //         }
+  //       );
+  //     },
+  //
+  //     function(error){
+  //       handler = Gmaps.build('Google');
+  //       handler.buildMap(
+  //         {
+  //           provider: {
+  //             zoom: 16,
+  //             center: new google.maps.LatLng(34.6945, 135.195)
+  //           },
+  //           internal: {id: 'map'}
+  //         },
+  //         function(){
+  //           markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  //           handler.bounds.extendWith(markers);
+  //           // handler.fitMapToBounds();
+  //         }
+  //       );
+  //     },
+  //
+  //     {
+  //       "enableHighAccuracy": false,
+  //       "timeout": 8000,
+  //       "maximumAge": 5000
+  //     }
+  //   );
+  // }
 
   handler = Gmaps.build('Google');
   handler.buildMap(

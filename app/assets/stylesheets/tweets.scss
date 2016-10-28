@@ -6,10 +6,20 @@
       float: right;
     }
 
-    #crowd_label {
+    #crowd-label {
       margin-bottom: 5px;
       width: 80%;
       padding-left: 15px;
+    }
+
+    #genre-label {
+      margin-bottom: 5px;
+      width: 80%;
+      padding-left: 15px;
+    }
+
+    #genre-form {
+      margin-bottom: 15px;
     }
 
     input[type="radio"] {

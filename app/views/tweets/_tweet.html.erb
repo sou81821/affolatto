@@ -26,6 +26,9 @@
             <p><strong><%= @tweet.user.name %></strong></p>
           </div>
         </div>
+        <div id="tweet-genre">
+          <p>ジャンル：<strong><%= @tweet.genre %></strong></p>
+        </div>
       </div>
 
     <% else %>
@@ -37,11 +40,20 @@
           </div>
         <% end %>
 
-        <div id="crowd_label">
+        <div id="crowd-label">
           <%= f.label "混み具合" %><br>
         </div>
         <%= f.radio_button :is_crowd, 1, {:checked => true} %><%= f.label :crowd_1, "混んでる" %>
         <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
+
+        <div id="select-genre">
+          <div id="genre-label" style="">
+            <%= f.label "ジャンル" %>
+          </div>
+          <div id="genre-form">
+            <%= f.select :genre, Tweet.uniq.pluck(:genre) %>
+          </div>
+        </div>
 
         <% if is_top == true %>
           <%= f.hidden_field :latitude, :id => "js_latitude", :value => 0 %>

@@ -8,6 +8,10 @@ class Scraping
     # 店舗名・住所・ジャンル取得
     name = session.all(".rst-name")[0].all("p")[0].text
     address = session.find(".address").all("p")[0].text
+    genre = session.all(".linktree__parent-target-text")[2].text
+    # if session.all(".rst-data")[0].all("tr")[1].find("th").text == "ジャンル"
+    #   genre = session.all(".rst-data")[0].all("tr")[1].find("p").text
+    # end
     check_time = 1800
 
     # webからの予約が可能か確認
@@ -27,50 +31,6 @@ class Scraping
         puts "混んでる"
       end
 
-      # 当日の日付ボタンがクリックできるか確認
-      # begin
-      #   # calender.all("p")[today-1].trigger("click")
-      #   if session.all(".js-timelist-items").to_a.length > 0
-      #     timelist.each do |time|
-      #       if time.find("a").text.gsub(/:/, "").to_i == check_time
-      #         binding.pry
-      #       else
-      #         puts time.find("a").text.gsub(/:/, "").to_i
-      #       end
-      #     end
-      #   else
-      #     puts "当日の日付ボタンクリックできません(else)"
-      #   end
-      # rescue
-      #   puts "当日の日付ボタンクリックできません(rescue)"
-      # end
-
-      # 当日の日付ボタンがクリックできるか確認
-      # begin
-      #   # select.select(check_time.slice(0,2) + ":" + check_time.slice(2,4))
-      #   # session.find(".js-form-widget-iframe-link").trigger("click")
-      #   calender = session.find(".js-week-wrap")
-      #   calender.all("p")[today-1].trigger("click")
-      #
-      #   store_open = true
-      #   puts "営業時間内"
-      #
-      #   # フレーム移動
-      #   session.within_frame(session.find(".cboxIframe")) do
-      #     # 空席かどうか確認
-      #     begin
-      #       message = session.find(".booking-modal__result-message").text
-      #       crowd = true
-      #       print("満室：", message, "\n")
-      #     rescue
-      #       puts "空室"
-      #     end
-      #   end
-      #
-      # rescue
-      #   puts "営業時間外"
-      # end
-
     # web予約不可（webから混雑状況確認できない）
     rescue
       puts "web予約不可"
@@ -78,16 +38,18 @@ class Scraping
 
     puts name
     puts address
+    puts genre
     print(can_reserve_from_web, crowd, "\n")
-    return address, can_reserve_from_web, crowd
+    return address, genre, can_reserve_from_web, crowd
   end
 
 
   # データをDBに格納
-  def self.save_db(address, crowd)
+  def self.save_db(address, genre, crowd)
     tweet = Tweet.where(address: address).first_or_initialize
     tweet.user_id  = 0
     tweet.address  = address
+    tweet.genre    = genre
     tweet.is_crowd = crowd
     tweet.save()
   end
@@ -96,7 +58,8 @@ class Scraping
   # 食べログから混雑状況をスクレイピング
   def self.scraping_from_tabelog
     # root_url = "https://tabelog.com/"
-    search_url = "https://tabelog.com/hyogo/A2801/A280108/"
+    # search_url = "https://tabelog.com/hyogo/A2801/A280108/"
+    search_url = "https://tabelog.com/tokyo/A1302/A130201/R6586/rstLst/"
 
     Capybara.register_driver :poltergeist do |app|
       Capybara::Poltergeist::Driver.new(app, {:js_errors => false, :timeout => 1000})
@@ -134,11 +97,11 @@ class Scraping
         puts store_urls[i]
         sleep(1)
         session.visit store_urls[i]
-        address, can_reserve_from_web, crowd = scraping_crowd(session, today, check_time)
+        address, genre, can_reserve_from_web, crowd = scraping_crowd(session, today, check_time)
 
         # web予約可能ならデータベースに格納
         if can_reserve_from_web
-          save_db(address, crowd)
+          save_db(address, genre, crowd)
         end
       end
 

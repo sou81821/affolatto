@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(is_crowd: create_params[:is_crowd], latitude: create_params[:latitude], longitude: create_params[:longitude], user_id: current_user.id)
+    Tweet.create(is_crowd: create_params[:is_crowd], latitude: create_params[:latitude], longitude: create_params[:longitude], user_id: current_user.id, genre: create_params[:genre])
     redirect_to action: :index
   end
 
@@ -44,7 +44,7 @@ class TweetsController < ApplicationController
 
   private
   def create_params
-    params.require(:tweet).permit(:is_crowd, :latitude, :longitude)
+    params.require(:tweet).permit(:is_crowd, :latitude, :longitude, :genre)
   end
 
   def update_params

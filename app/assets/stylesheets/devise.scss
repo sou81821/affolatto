@@ -80,6 +80,10 @@ form {
     font-family: "游ゴシック", "YuGothic";
   }
 
+  input[type="textarea"] {
+    -webkit-appearance: none;
+  }
+
   input[type="submit"] {
     -webkit-appearance: none;
     background-color: #57C3E9;

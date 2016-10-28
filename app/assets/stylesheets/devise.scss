@@ -80,7 +80,19 @@ form {
     font-family: "游ゴシック", "YuGothic";
   }
 
-  textarea {
+  input[type="email"] {
+    -webkit-appearance: none;
+  }
+
+  input[type="password"] {
+    -webkit-appearance: none;
+  }
+
+  input[name="user[name]"] {
+    -webkit-appearance: none;
+  }
+
+  input[name="user[avatar]"] {
     -webkit-appearance: none;
   }
 

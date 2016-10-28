@@ -17,68 +17,77 @@
 </div>
 
 <script type="text/javascript">
-  // // 現在地の取得
-  // if(navigator.geolocation) {
-  //   navigator.geolocation.getCurrentPosition(
-  //     function(position){
-  //       handler = Gmaps.build('Google');
-  //       handler.buildMap(
-  //         {
-  //           provider: {
-  //             zoom: 16,
-  //             center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-  //           },
-  //           internal: {id: 'map'}
-  //         },
-  //         function(){
-  //           markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  //           handler.bounds.extendWith(markers);
-  //           // handler.fitMapToBounds();
-  //         }
-  //       );
-  //     },
-  //
-  //     function(error){
-  //       handler = Gmaps.build('Google');
-  //       handler.buildMap(
-  //         {
-  //           provider: {
-  //             zoom: 16,
-  //             center: new google.maps.LatLng(34.6945, 135.195)
-  //           },
-  //           internal: {id: 'map'}
-  //         },
-  //         function(){
-  //           markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  //           handler.bounds.extendWith(markers);
-  //           // handler.fitMapToBounds();
-  //         }
-  //       );
-  //     },
-  //
-  //     {
-  //       "enableHighAccuracy": false,
-  //       "timeout": 8000,
-  //       "maximumAge": 5000
-  //     }
-  //   );
-  // }
+  var setEvent = function(handler) {
+    <% if user_signed_in? %>
+    // クリックした地点の座標にマーカーを設置
+    // google.maps.event.addListener(handler.getMap(), 'click', function(event){
+    handler.getMap().addListener('click', function(event){
+      <% infowindow = render partial: "tweet", locals: { tweet: @tweet, is_top: true, top_tweeted: false } %>
+      var click_marker = handler.addMarkers([
+        {
+          "lat": event.latLng.lat(),
+          "lng": event.latLng.lng(),
+          "infowindow": <%=raw infowindow.to_json %>
+        }
+      ]);
+      handler.bounds.extendWith(click_marker);
+      //handler.fitMapToBounds();
 
-  handler = Gmaps.build('Google');
-  handler.buildMap(
-    {
-      provider: {
-        zoom: 16,
-        center: new google.maps.LatLng(34.6945, 135.195)
+      google.maps.event.trigger(click_marker[0].getServiceObject(), 'click');
+      setTimeout(setLatLng, 1000, event);
+    });
+    <% end %>
+  }
+  // // 現在地の取得
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position){
+        handler = Gmaps.build('Google');
+        console.log("hoge")
+        console.log(handler)
+        handler.buildMap(
+          {
+            provider: {
+              zoom: 16,
+              center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+            },
+            internal: {id: 'map'}
+          },
+          function(){
+            markers = handler.addMarkers(<%=raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            // handler.fitMapToBounds();
+          }
+        );
+        setEvent(handler);
       },
-      internal: {id: 'map'}
-    },
-    function(){
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      // handler.fitMapToBounds();
-    }
-  );
+
+      function(error){
+        handler = Gmaps.build('Google');
+        handler.buildMap(
+          {
+            provider: {
+              zoom: 16,
+              center: new google.maps.LatLng(34.6945, 135.195)
+            },
+            internal: {id: 'map'}
+          },
+          function(){
+            markers = handler.addMarkers(<%=raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            // handler.fitMapToBounds();
+          }
+        );
+        setEvent(handler);
+      },
+
+      {
+        "enableHighAccuracy": false,
+        "timeout": 8000,
+        "maximumAge": 5000
+      }
+    );
+  }
 
   // 検索ボックスに入力された地域に移動
   $('#search_button').on('click', function(){
@@ -105,6 +114,7 @@
               // handler.fitMapToBounds();
             }
           );
+          setEvent(handler);
         }
       }
     );
@@ -116,24 +126,8 @@
     $('#js_longitude').attr('value', event.latLng.lng());
   }
 
-  <% if user_signed_in? %>
-    // クリックした地点の座標にマーカーを設置
-    // google.maps.event.addListener(handler.getMap(), 'click', function(event){
-    handler.getMap().addListener('click', function(event){
-      <% infowindow = render partial: "tweet", locals: { tweet: @tweet, is_top: true, top_tweeted: false } %>
-      var click_marker = handler.addMarkers([
-        {
-          "lat": event.latLng.lat(),
-          "lng": event.latLng.lng(),
-          "infowindow": <%=raw infowindow.to_json %>
-        }
-      ]);
-      handler.bounds.extendWith(click_marker);
-      //handler.fitMapToBounds();
 
-      google.maps.event.trigger(click_marker[0].getServiceObject(), 'click');
-      setTimeout(setLatLng, 1000, event);
-    });
+
 
     // infowindowが表示された時に発生するイベント
     // google.maps.event.addListener(infowindow, 'domready', function(){
@@ -141,6 +135,6 @@
     //   console.log("marker click");
     // });
 
-  <% end %>
+
 
 </script>

@@ -73,7 +73,6 @@ form {
   }
 
   input,textarea {
-    -webkit-appearance: none;
     width: 90%;
     @include boxBase(0 0 10px, 10px);
     border: 1px solid #D8D8D8;

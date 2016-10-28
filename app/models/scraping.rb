@@ -2,8 +2,8 @@ require 'capybara/poltergeist'
 
 class Scraping
   def self.scraping_crowd(session, today, check_time)
-    can_reserve_from_web = false  # web予約可能か
-    crowd = 0                     # 混んでいるか
+    can_reserve_from_web = false   # web予約可能か
+    crowd = 0                      # 混んでいるか
 
     # 店舗名・住所・ジャンル取得
     name = session.all(".rst-name")[0].all("p")[0].text

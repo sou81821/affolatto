@@ -1,7 +1,14 @@
-<!-- マーカーの説明 -->
-<!-- <div class="explain">
-  <p><%= image_tag("marker-red.png") %> ... 混んでる <%= image_tag("marker-green.png") %> ... 空いてる</p>
-</div> -->
+<!-- ジャンルの検索フォーム -->
+<!-- <%= form_tag('tweets/search', method: :get) do %>
+  <div id="genre-search" style="height: 100px;">
+    <select name="genre">
+      <% @genres.each do |genre| %>
+        <option><%= genre %></option>
+      <% end %>
+    </select>
+    <button class="btn-search" title="検索" type="submit">
+  </div>
+<% end %> -->
 
 <!-- マップ -->
 <div class="gmap_outside">
@@ -12,7 +19,6 @@
   var setEvent = function(handler) {
     <% if user_signed_in? %>
     // クリックした地点の座標にマーカーを設置
-    // google.maps.event.addListener(handler.getMap(), 'click', function(event){
     handler.getMap().addListener('click', function(event){
       <% infowindow = render partial: "tweet", locals: { tweet: @tweet, is_top: true, top_tweeted: false } %>
       var click_marker = handler.addMarkers([
@@ -30,6 +36,7 @@
     });
     <% end %>
   }
+
   // // 現在地の取得
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
@@ -85,8 +92,8 @@
   $(".gmap_inside").height(window_height-80);
 
   // 検索ボックスに入力された地域に移動
-  $('#search_button').on('click', function(){
-    var search_address = $("#search_address").val()
+  $('#area-search-button').on('click', function(){
+    var search_address = $("#search-address").val()
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode(
       {
@@ -114,6 +121,39 @@
       }
     );
   });
+
+  // 検索ボックスに入力されたジャンルのマーカーのみ表示
+  // $('#genre-search-button').on('click', function(){
+    // var genre = $("[name=genre] option:selected").text();
+    // console.log(genre);
+    // var search_address = $("#search-address").val()
+    // var geocoder = new google.maps.Geocoder();
+    // geocoder.geocode(
+    //   {
+    //     "address": search_address,
+    //     "region": "jp"
+    //   },
+    //   function(results,status){
+    //     if(status==google.maps.GeocoderStatus.OK){
+    //       handler.buildMap(
+    //         {
+    //           provider: {
+    //             zoom: 16,
+    //             center: new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+    //           },
+    //           internal: {id: 'map'}
+    //         },
+    //         function(){
+    //           markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    //           handler.bounds.extendWith(markers);
+    //           // handler.fitMapToBounds();
+    //         }
+    //       );
+    //       setEvent(handler);
+    //     }
+    //   }
+    // );
+  // });
 
   // infowindowにマーカーの緯度経度を埋め込む関数
   var setLatLng = function(event){

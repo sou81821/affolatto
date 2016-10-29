@@ -6,6 +6,7 @@ class UsersController < ApplicationController
       redirect_to action: 'show', id: current_user.id
     end
 
+    @genres = Tweet.uniq.pluck(:genre)
     @tweets = Tweet.where(user_id: current_user.id)
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude

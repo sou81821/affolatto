@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   root 'tweets#index'
-  resources :tweets, except: [:show, :edit]
+  resources :tweets, except: [:show, :edit] do
+    collection do
+      get 'search'
+    end
+  end
   resources :users, only: [:show]
 end

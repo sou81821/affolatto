@@ -13,8 +13,9 @@ h1,h2,h3,h4,h5,h6,p,label,a {
 header {
 
   #menu-box {
-    background-color: #222;
+    background-color: orange;
     overflow: hidden;
+    height: 50px;
 
     #header-left {
       width: 10%;
@@ -39,15 +40,18 @@ header {
         text-align: right;
         overflow: hidden;
 
-        #search_address {
+        #search-address {
           width: 50%;
           margin: 5px 0 0;
+          border: 0;
           -webkit-appearance: none;
         }
 
-        #search_button {
+        #area-search-button {
           width: 50px;
           margin: 5px 0 0;
+          border: 0;
+          background-color: white;
           -webkit-appearance: none;
         }
 
@@ -102,7 +106,7 @@ header {
         a {
           display: block;
           padding: 12px 0 10px;
-          background: #222;
+          background: orange;
           color: #fff;
           text-align: center;
           text-decoration: none;
@@ -181,7 +185,8 @@ header {
           border-bottom: 1px solid #444;
 
           a {
-            background-color: #333;
+            color: black;
+            background-color: white;
           }
         }
       }
@@ -200,8 +205,9 @@ header {
         display: block;
         position: relative;
         width: 12%;
+        margin-top: 3px;
         float: left;
-        background: #222;
+        background: orange;
 
         &:before {
           display: block;
@@ -220,7 +226,6 @@ header {
           height: 46px;
           display: block;
           position: relative;
-          border-bottom: 1px solid #444;
           color: #fff;
           text-align: center;
           text-decoration: none;
@@ -233,7 +238,7 @@ header {
             left: 10px;
             width: 20px;
             height: 4px;
-            background: #222;
+            background: orange;
           }
 
           &:before {

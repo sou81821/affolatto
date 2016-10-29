@@ -2,7 +2,15 @@ class TweetsController < ApplicationController
 
   def index
     @tweet = Tweet.new
-    @tweets = Tweet.all
+    @genres = Tweet.uniq.pluck(:genre)
+
+    # 全ツイート
+    # @tweets = Tweet.all
+    # 直近半日のツイート（デモ用）
+    @tweets = Tweet.where(updated_at: Time.zone.now-12*60*60..Time.zone.now)
+    # 直近30分のツイート（本番用）
+    # @tweets = Tweet.where(updated_at: Time.zone.now-30*60..Time.zone.now)
+
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude
       marker.lng tweet.longitude
@@ -39,6 +47,33 @@ class TweetsController < ApplicationController
     tweet = Tweet.find(params[:tweet][:id])
     tweet.update(update_params)
     redirect_to controller: 'users', action: 'show', id: current_user.id
+  end
+
+  def search
+    genre = params[:genre]
+    @tweet = Tweet.new
+    @genres = Tweet.uniq.pluck(:genre)
+    @tweets = Tweet.where(genre: genre)
+    @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
+      marker.lat tweet.latitude
+      marker.lng tweet.longitude
+      marker.infowindow render_to_string(:partial => "tweet", :locals => { :@tweet => tweet, :is_top => true, :top_tweeted => true })
+      marker.json({ title: tweet.id })
+      if tweet.is_crowd == 1
+        marker.picture({
+          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFA500|000000",
+          "width": 30,
+          "height": 30
+        })
+      else
+        marker.picture({
+          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFFACD|000000",
+          "width": 30,
+          "height": 30
+        })
+      end
+    end
+    render 'index'
   end
 
   private

@@ -49,11 +49,11 @@
         <%= f.radio_button :is_crowd, 0 %><%= f.label :crowd_2, "空いてる" %><br><br>
 
         <div id="select-genre">
-          <div id="genre-label" style="">
+          <div id="genre-label">
             <%= f.label "ジャンル" %>
           </div>
           <div id="genre-form">
-            <%= f.select :genre, Tweet.uniq.pluck(:genre) %>
+            <%= f.select :genre, @genres %>
           </div>
         </div>
 

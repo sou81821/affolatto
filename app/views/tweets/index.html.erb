@@ -1,10 +1,10 @@
 <!-- 地図の検索フォーム -->
-<form>
+<!-- <form>
   <div class="area_search clearfix">
     <input type="text" id="search_address", placeholder="検索エリア">
     <input type="button" value="検索" id="search_button">
   </div>
-</form>
+</form> -->
 
 <!-- マーカーの説明 -->
 <div class="explain">
@@ -125,16 +125,5 @@
     $('#js_latitude').attr('value', event.latLng.lat());
     $('#js_longitude').attr('value', event.latLng.lng());
   }
-
-
-
-
-    // infowindowが表示された時に発生するイベント
-    // google.maps.event.addListener(infowindow, 'domready', function(){
-    // handler.getMap().infowindow.addListener('click', function(){
-    //   console.log("marker click");
-    // });
-
-
 
 </script>

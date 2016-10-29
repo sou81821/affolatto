@@ -9,15 +9,10 @@ class Scraping
     name = session.all(".rst-name")[0].all("p")[0].text
     address = session.find(".address").all("p")[0].text
     genre = session.all(".linktree__parent-target-text")[2].text
-    # if session.all(".rst-data")[0].all("tr")[1].find("th").text == "ジャンル"
-    #   genre = session.all(".rst-data")[0].all("tr")[1].find("p").text
-    # end
     check_time = 1800
 
     # webからの予約が可能か確認
     begin
-      # select = session.find("#rstinfo-booking-visit-time")
-      # select = session.all(".js-show-yoyaku-modal-trigger")[0]
       session.all(".js-show-yoyaku-modal-trigger")[0].trigger("click")
       can_reserve_from_web = true
 

@@ -10,7 +10,6 @@ class TweetsController < ApplicationController
       marker.json({ title: tweet.id })
       if tweet.is_crowd == 1
         marker.picture({
-          # "picture" => path_to_image('/images/logo_avatar.png'),
           "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FF0000|000000",
           "width": 30,
           "height": 30

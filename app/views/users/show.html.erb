@@ -41,4 +41,35 @@
       $(".gmap_inside").height(window_height-82);
     }
 
+    // 検索ボックスに入力された地域に移動
+    $('#area-search-button').on('click', function(){
+      var search_address = $("#search-address").val()
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode(
+        {
+          "address": search_address,
+          "region": "jp"
+        },
+        function(results,status){
+          if(status==google.maps.GeocoderStatus.OK){
+            handler.buildMap(
+              {
+                provider: {
+                  zoom: 16,
+                  center: new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng())
+                },
+                internal: {id: 'map'}
+              },
+              function(){
+                markers = handler.addMarkers(<%=raw @hash.to_json %>);
+                handler.bounds.extendWith(markers);
+                // handler.fitMapToBounds();
+              }
+            );
+            setEvent(handler);
+          }
+        }
+      );
+    });
+
 </script>

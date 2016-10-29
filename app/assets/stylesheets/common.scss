@@ -15,11 +15,11 @@ header {
   #menu-box {
     background-color: orange;
     overflow: hidden;
-    height: 50px;
+    // height: 47px;
 
     #header-left {
       width: 10%;
-      margin-top: 12px;
+      margin-top: 10px;
       float: left;
 
       a {
@@ -182,10 +182,10 @@ header {
         li {
           width: 100%;
           margin: 0;
-          border-bottom: 1px solid #444;
+          border-bottom: 1px solid orange;
 
           a {
-            color: black;
+            color: orange;
             background-color: white;
           }
         }
@@ -285,7 +285,8 @@ footer {
     font-size: 10px;
     color: #546E7A;
     text-align: center;
-    margin: 10px 0;
+    padding: 10px 0;
+    margin: 0;
   }
 
 }

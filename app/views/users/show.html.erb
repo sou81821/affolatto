@@ -1,8 +1,3 @@
-<script>
-  var window_height = $(window).height();
-  $(".gmap_inside").height(window_height-100);
-</script>
-
 <div class="no_tweets">
   <p>まだ投稿がありません</p>
 </div>
@@ -38,8 +33,12 @@
       }
     );
 
-    // 地図の高さ設定（window幅 - header高さ - footer高さ）
+    // 地図の高さ設定
     var window_height = $(window).height();
-    $(".gmap_inside").height(window_height-80);
+    if ($('.no_tweets').css('display') == 'block') {
+      $(".gmap_inside").height(window_height-132);
+    } else {
+      $(".gmap_inside").height(window_height-82);
+    }
 
 </script>

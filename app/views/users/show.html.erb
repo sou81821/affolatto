@@ -18,7 +18,6 @@
         center: new google.maps.LatLng(34.6945, 135.195)
       }
     } else {
-      // $(".no_tweets").hide()
       var provider_detail = { }
     }
 
@@ -33,5 +32,9 @@
         handler.fitMapToBounds();
       }
     );
+
+    // 地図の高さ設定（window幅 - header高さ - footer高さ）
+    var window_height = $(window).height();
+    $(".gmap_inside").height(window_height-80);
 
 </script>

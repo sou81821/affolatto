@@ -10,13 +10,13 @@ class TweetsController < ApplicationController
       marker.json({ title: tweet.id })
       if tweet.is_crowd == 1
         marker.picture({
-          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FF0000|000000",
+          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFA500|000000",
           "width": 30,
           "height": 30
         })
       else
         marker.picture({
-          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|90ee90|000000",
+          "url": "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=|FFFACD|000000",
           "width": 30,
           "height": 30
         })

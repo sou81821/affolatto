@@ -6,7 +6,7 @@ $(function () {
     $body.toggleClass('side-open');
     $('#js__overlay').on('click', function () {
       $body.removeClass('side-open');
-      $('.side-menu').hide()
+      // $('.side-menu').hide()
     });
   });
 });

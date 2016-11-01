@@ -12,6 +12,7 @@ h1,h2,h3,h4,h5,h6,p,label,a {
 
 html,body {
   height: 100%;
+  background-color: white;
 }
 
 header {
@@ -330,7 +331,7 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 150px;
   height: 100%;
   padding-top: 150px;
   text-align: left;
@@ -346,7 +347,7 @@ footer {
 
       a {
         color: white;
-        font-size: 25px;
+        font-size: 20px;
         text-decoration: none;
         &:hover {
           transition: .2s;
@@ -373,6 +374,6 @@ footer {
 // サイドメニューオープン
 .side-open .wrapper,
 .side-open .overlay {
-  -webkit-transform: translate3d(200px, 0, 0);
-  transform: translate3d(200px, 0, 0);
+  -webkit-transform: translate3d(150px, 0, 0);
+  transform: translate3d(150px, 0, 0);
 }

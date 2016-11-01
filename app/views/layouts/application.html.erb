@@ -14,66 +14,91 @@
 
 </head>
 <body>
-<header class="header">
-  <div id="menu-box">
-    <div id="toggle">
-      <a href="#"></a>
-    </div>
-    <div id="header-left">
-      <a href="/">affollato</a>
-    </div>
+
+<div class="overlay" id="js__overlay"></div>
+
+<nav class="side-menu">
+  <ul>
     <% if user_signed_in? %>
-      <div id="profile-image">
-        <% if current_user.provider == "facebook" %>
-          <% if current_user.avatar.blank? %>
-            <%= link_to image_tag(current_user.fb_avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
-          <% else %>
-            <%= link_to image_tag(current_user.avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
-          <% end %>
-        <% else %>
-          <% if current_user.avatar.blank? %>
-            <%= link_to image_tag('no_image.jpg', {:alt => 'プロフィール'}), edit_user_registration_path %>
-          <% else %>
-            <%= link_to image_tag(current_user.avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
-          <% end %>
-        <% end %>
-      </div>
+      <li><%= link_to 'ホーム', '/' %></li>
+      <li><%= link_to '投稿履歴', "/users/#{current_user.id}" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <!-- <li><%= link_to image_tag('home.png', {:alt => 'ホーム', :size => '40x40'}), '/' %></li>
+      <li><%= link_to image_tag('mytweet.png', {:alt => '投稿履歴', :size => '40x40'}), "/users/#{current_user.id}" %></li>
+      <li><%= link_to image_tag('logout.png', {:alt => 'ログアウト', :size => '40x40'}), destroy_user_session_path, method: :delete %></li> -->
+    <% else %>
+      <li><%= link_to '新規登録', new_user_registration_path %></li>
+      <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <!-- <li><%= link_to image_tag('login.png', {:alt => 'ログイン', :size => '40x40'}), new_user_session_path %></li> -->
     <% end %>
+  </ul>
+</nav>
 
-    <!-- 地図の検索フォーム -->
-    <div id="header-center">
-      <form>
-        <div class="area_search clearfix">
-          <input type="text" id="search-address", placeholder="検索エリア">
-          <input type="button" value="検索" id="area-search-button">
+<div class="wrapper">
+  <header class="header">
+    <div id="menu-box">
+
+      <div id="toggle">
+        <a href="#"></a>
+      </div>
+
+      <div id="header-left">
+        <a href="/">affollato</a>
+      </div>
+
+      <% if user_signed_in? %>
+        <div id="profile-image">
+          <% if current_user.provider == "facebook" %>
+            <% if current_user.avatar.blank? %>
+              <%= link_to image_tag(current_user.fb_avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
+            <% else %>
+              <%= link_to image_tag(current_user.avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
+            <% end %>
+          <% else %>
+            <% if current_user.avatar.blank? %>
+              <%= link_to image_tag('no_image.jpg', {:alt => 'プロフィール'}), edit_user_registration_path %>
+            <% else %>
+              <%= link_to image_tag(current_user.avatar, {:alt => 'プロフィール'}), edit_user_registration_path %>
+            <% end %>
+          <% end %>
         </div>
-      </form>
+      <% end %>
+
+      <!-- 地図の検索フォーム -->
+      <div id="header-center">
+        <form>
+          <div class="area_search clearfix">
+            <input type="text" id="search-address", placeholder="検索エリア">
+            <input type="button" value="検索" id="area-search-button">
+          </div>
+        </form>
+      </div>
+
+      <div id="header-right">
+        <ul id="menu" class="">
+          <% if user_signed_in? %>
+            <li><%= link_to 'ホーム', '/' %></li>
+            <li><%= link_to '投稿履歴', "/users/#{current_user.id}" %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <!-- <li><%= link_to image_tag('home.png', {:alt => 'ホーム', :size => '40x40'}), '/' %></li>
+            <li><%= link_to image_tag('mytweet.png', {:alt => '投稿履歴', :size => '40x40'}), "/users/#{current_user.id}" %></li>
+            <li><%= link_to image_tag('logout.png', {:alt => 'ログアウト', :size => '40x40'}), destroy_user_session_path, method: :delete %></li> -->
+          <% else %>
+            <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <!-- <li><%= link_to image_tag('login.png', {:alt => 'ログイン', :size => '40x40'}), new_user_session_path %></li> -->
+          <% end %>
+        </ul>
+      </div>
     </div>
+  </header>
 
-    <div id="header-right">
-      <ul id="menu" class="">
-        <% if user_signed_in? %>
-          <li><%= link_to 'ホーム', '/' %></li>
-          <li><%= link_to '投稿履歴', "/users/#{current_user.id}" %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-          <!-- <li><%= link_to image_tag('home.png', {:alt => 'ホーム', :size => '40x40'}), '/' %></li>
-          <li><%= link_to image_tag('mytweet.png', {:alt => '投稿履歴', :size => '40x40'}), "/users/#{current_user.id}" %></li>
-          <li><%= link_to image_tag('logout.png', {:alt => 'ログアウト', :size => '40x40'}), destroy_user_session_path, method: :delete %></li> -->
-        <% else %>
-          <li><%= link_to '新規登録', new_user_registration_path %></li>
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <!-- <li><%= link_to image_tag('login.png', {:alt => 'ログイン', :size => '40x40'}), new_user_session_path %></li> -->
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</header>
+  <%= yield %>
 
-<%= yield %>
-
-<footer>
-  <p>Copyright Affollato 2016.</p>
-</footer>
+  <footer>
+    <p>Copyright Affollato 2016.</p>
+  </footer>
+</div>
 
 </body>
 </html>

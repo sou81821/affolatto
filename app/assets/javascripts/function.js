@@ -1,16 +1,10 @@
-// ヘッダーのトグルボタンの開閉
-$(function(){
-  $("#toggle").click(function(){
-    $("#menu").slideToggle();
-    return false;
-  });
-  $(window).resize(function(){
-    var win = $(window).width();
-    var p = 480;
-    if(win > p){
-      $("#menu").show();
-    } else {
-      $("#menu").hide();
-    }
+// サイドメニュー開閉処理
+$(function () {
+  var $body = $('body');
+  $('#toggle').on('click', function () {
+    $body.toggleClass('side-open');
+    $('#js__overlay').on('click', function () {
+      $body.removeClass('side-open');
+    });
   });
 });

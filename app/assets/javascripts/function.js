@@ -2,7 +2,7 @@
 $(function () {
   var $body = $('body');
   $('#toggle').on('click', function () {
-    $('.side-menu').show()
+    // $('.side-menu').show()
     $body.toggleClass('side-open');
     $('#js__overlay').on('click', function () {
       $body.removeClass('side-open');

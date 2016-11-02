@@ -35,9 +35,7 @@ $(function (){
   });
   $('#js__overlay').on('click', function () {
     if($body.hasClass('side-open')){
-      // console.log("outside")
       $('.wrapper').on('transitionend', function(){
-        // console.log("a");
         $('.side-menu').hide();
       });
     }

@@ -19,9 +19,9 @@ $(function (){
     $body.toggleClass('side-open');
   });
   $('#js__overlay').on('click', function () {
+    $('.side-open.wrapper').on('transitionend', function(){
+        $('.side-menu').hide();
+    });
     $body.toggleClass('side-open');
-  });
-  $('.side-open.wrapper').on('transitionend', function(){
-      $('.side-menu').hide();
   });
 });

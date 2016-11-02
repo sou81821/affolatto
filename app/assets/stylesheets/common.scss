@@ -11,7 +11,7 @@ h1,h2,h3,h4,h5,h6,p,label,a {
 }
 
 html,body {
-  // height: 100%;
+  height: 100%;
   background-color: white;
 }
 
@@ -330,7 +330,7 @@ footer {
 .side-menu {
   // display: none;
   position: fixed;
-  top: 0;
+  // top: 0;
   left: 0;
   width: 150px;
   // height: 100%;
@@ -377,5 +377,7 @@ footer {
 .side-open .wrapper,
 .side-open .overlay {
   -webkit-transform: translate3d(150px, 0, 0);
+  -moz-transform: translate3d(150px, 0, 0);
+  -ms-transform: translate3d(150px, 0, 0);
   transform: translate3d(150px, 0, 0);
 }

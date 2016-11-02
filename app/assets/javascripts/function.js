@@ -34,11 +34,13 @@ $(function (){
     $body.toggleClass('side-open');
   });
   $('#js__overlay').on('click', function () {
+    if($body.hasClass('side-open')){
+      // console.log("outside")
+      $('.wrapper').on('transitionend', function(){
+        // console.log("a");
+        $('.side-menu').hide();
+      });
+    }
     $body.toggleClass('side-open');
   });
-  if($body.hasClass('.side-open')){
-    $('.wrapper').on('transitionend', function(){
-      $('.side-menu').hide();
-    });
-  }　
 });

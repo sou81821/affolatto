@@ -22,7 +22,7 @@ $(function () {
   $('#js__overlay').on('click', function () {
       $body.removeClass('side-open');
   });
-  $('.side-open').on('webkitAnimationEnd', function(){
-        $('.side-menu').hide()
+  $('.wrapper').on('webkitAnimationEnd', function(){
+      $('.side-menu').hide()
   });
 });

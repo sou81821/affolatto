@@ -1,7 +1,7 @@
-Tweet.create(user_id:"2", is_crowd:"1", latitude:"34.6948", longitude:"135.192", genre:"その他")
-Tweet.create(user_id:"2", is_crowd:"0", latitude:"34.6946", longitude:"135.193", genre:"居酒屋")
-Tweet.create(user_id:"2", is_crowd:"1", latitude:"34.6955", longitude:"135.197", genre:"居酒屋")
-Tweet.create(user_id:"2", is_crowd:"1", latitude:"34.6944", longitude:"135.192", genre:"バル")
-Tweet.create(user_id:"2", is_crowd:"0", latitude:"34.6944", longitude:"135.193", genre:"バル")
-Tweet.create(user_id:"2", is_crowd:"0", latitude:"34.6961", longitude:"135.195", genre:"その他")
-Tweet.create(user_id:"2", is_crowd:"1", latitude:"35.6577", longitude:"135.7", genre:"居酒屋")
+require "csv"
+
+tweet_csv = CSV.readlines("db/tweets.csv")
+tweet_csv.shift
+tweet_csv.each do |row|
+  Tweet.create(user_id: row[1], address: row[2], is_crowd: row[4], latitude: row[7], longitude: row[8], genre: row[9])
+end

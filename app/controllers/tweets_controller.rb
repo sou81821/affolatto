@@ -4,8 +4,8 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @genres = Tweet.uniq.pluck(:genre)
 
-    # @tweets = Tweet.all  # 全ツイート
-    @tweets = Tweet.where(updated_at: Time.zone.now-12*60*60..Time.zone.now)  # 直近半日のツイート（デモ用）
+    @tweets = Tweet.all  # 全ツイート
+    # @tweets = Tweet.where(updated_at: Time.zone.now-12*60*60..Time.zone.now)  # 直近半日のツイート（デモ用）
     # @tweets = Tweet.where(updated_at: Time.zone.now-30*60..Time.zone.now)   # 直近30分のツイート（本番用）
 
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|

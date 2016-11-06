@@ -7,11 +7,11 @@ $(function (){
     $body.toggleClass('side-open');
   });
   $('#js__overlay').on('click', function () {
-    $('#header-center').show();
     $body.toggleClass('side-open');
   });
   $('.wrapper').on('transitionend', function(){
     if(!($body.hasClass('side-open'))){
+      $('#header-center').show();
       $('.side-menu').hide();
     }
   });

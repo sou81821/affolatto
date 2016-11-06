@@ -37,7 +37,7 @@ header {
     }
 
     #header-center {
-      width: calc(100% - 10% - 302px);
+      width: calc(100% - 10% - 307px);
       float: left;
 
       .area_search {
@@ -57,7 +57,7 @@ header {
         }
 
         #search-address {
-          width: calc(100% - 200px - 50px);
+          width: calc(100% - 200px - 52px);
           margin: 5px 0 0;
           border: 0;
           float: right;
@@ -172,7 +172,7 @@ header {
     // スマホサイズ
     @media only screen and (max-width: 768px) {
       #header-center {
-        width: calc(100% - 100px);
+        width: calc(100% - 103px);
 
         .area_search {
           text-align: center;

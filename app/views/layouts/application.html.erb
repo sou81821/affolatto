@@ -65,6 +65,30 @@
       <% end %>
 
       <!-- 地図の検索フォーム -->
+      <div id="header-center">
+        <div class="area_search clearfix">
+          <!-- ジャンルの検索フォーム -->
+          <%= form_tag('/tweets/search', method: :get) do %>
+            <div id="genre-search">
+              <select name="genre" id="genre_select">
+                <% if @genres %>
+                  <% @genres.each do |genre| %>
+                    <% if genre == params[:genre] %>
+                      <option value="<%= genre %>" selected><%= genre %></option>
+                    <% else %>
+                      <option value="<%= genre %>"><%= genre %></option>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </select>
+            </div>
+          <% end %>
+
+          <form onsubmit="keySubmit(); return false;">
+              <input type="text" id="search-address", placeholder="エリア">
+          </form>
+        </div>
+      </div>
 
       <div id="header-right">
         <ul id="menu" class="">

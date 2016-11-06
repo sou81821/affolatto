@@ -18,22 +18,27 @@
 <script type="text/javascript">
   var setEvent = function(handler) {
     <% if user_signed_in? %>
-    // クリックした地点の座標にマーカーを設置
-    handler.getMap().addListener('click', function(event){
-      <% infowindow = render partial: "tweet", locals: { tweet: @tweet, is_top: true, top_tweeted: false } %>
-      var click_marker = handler.addMarkers([
-        {
-          "lat": event.latLng.lat(),
-          "lng": event.latLng.lng(),
-          "infowindow": <%=raw infowindow.to_json %>
-        }
-      ]);
-      handler.bounds.extendWith(click_marker);
-      //handler.fitMapToBounds();
+      // クリックした地点の座標にマーカーを設置
+      handler.getMap().addListener('click', function(event){
+        <% infowindow = render partial: "tweet", locals: { tweet: @tweet, is_top: true, top_tweeted: false } %>
+        var click_marker = handler.addMarkers([
+          {
+            "lat": event.latLng.lat(),
+            "lng": event.latLng.lng(),
+            "infowindow": <%=raw infowindow.to_json %>
+          }
+        ]);
+        handler.bounds.extendWith(click_marker);
+        //handler.fitMapToBounds();
 
-      google.maps.event.trigger(click_marker[0].getServiceObject(), 'click');
-      setTimeout(setLatLng, 1000, event);
-    });
+        google.maps.event.trigger(click_marker[0].getServiceObject(), 'click');
+        setTimeout(setLatLng, 1000, event);
+
+        // デフォルトのポップアップが表示される地点での投稿処理
+        google.maps.event.addListener(click_marker[0].getServiceObject(), 'click', function(){
+          setLatLng(event);
+        });
+      });
     <% end %>
   }
 
@@ -42,7 +47,6 @@
     navigator.geolocation.getCurrentPosition(
       function(position){
         handler = Gmaps.build('Google');
-        console.log(handler);
         handler.buildMap(
           {
             provider: {

@@ -172,16 +172,14 @@ header {
     // スマホサイズ
     @media only screen and (max-width: 768px) {
       #header-center {
-        // width: calc(100% - 103px);
-        width: 70%;
+        width: calc(100% - 103px);
 
         .area_search {
           text-align: center;
           margin: 0;
 
           #search-address {
-            // width: calc(100% - 153px - 50px);
-            width: 20%;
+            width: calc(100% - 153px - 50px);
             float: right;
           }
           #genre-search {

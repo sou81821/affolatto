@@ -3,6 +3,7 @@ class TweetsController < ApplicationController
   def index
     @tweet = Tweet.new
     @genres = Tweet.uniq.pluck(:genre)
+    @genres.unshift("ジャンル選択（全て）")
 
     @tweets = Tweet.all  # 全ツイート
     # @tweets = Tweet.where(updated_at: Time.zone.now-12*60*60..Time.zone.now)  # 直近半日のツイート（デモ用）
@@ -50,7 +51,14 @@ class TweetsController < ApplicationController
     genre = params[:genre]
     @tweet = Tweet.new
     @genres = Tweet.uniq.pluck(:genre)
-    @tweets = Tweet.where(genre: genre)
+    @genres.unshift("ジャンル選択（全て）")
+
+    if genre == "ジャンル選択（全て）"
+      @tweets = Tweet.all
+    else
+      @tweets = Tweet.where(genre: genre)
+    end
+
     @hash = Gmaps4rails.build_markers(@tweets) do |tweet, marker|
       marker.lat tweet.latitude
       marker.lng tweet.longitude

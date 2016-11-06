@@ -42,7 +42,7 @@
     }
 
     // 検索ボックスに入力された地域に移動
-    $('#area-search-button').on('click', function(){
+    function keySubmit() {
       var search_address = $("#search-address").val()
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode(
@@ -70,6 +70,10 @@
           }
         }
       );
+    }
+
+    $("#genre_select").on('change', function() {
+      window.location.href = "/users/16/search?utf8=✓&genre=" + $(this).val();
     });
 
 </script>

@@ -47,11 +47,12 @@ header {
         #genre-search {
           float: right;
           width: 200px;
-          // width: 40%;
 
           select {
             height: 37px;
             margin: 5px 10px;
+            background-color: white;
+            border: 0;
           }
         }
 

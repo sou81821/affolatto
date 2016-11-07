@@ -53,7 +53,7 @@
             <%= f.label "ジャンル" %>
           </div>
           <div id="genre-form">
-            <%= f.select :genre, @genres %>
+            <%= f.select :genre, @genres[1..@genres.length] %>
           </div>
         </div>
 
